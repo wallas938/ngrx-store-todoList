@@ -1,5 +1,6 @@
 <mat-list>
   <app-todo *ngFor="let todo of todos"
+            [id]="todo.id"
             [name]="todo.name"
             [status]="todo.status"
             (isDone)="onStatusChange($event)">

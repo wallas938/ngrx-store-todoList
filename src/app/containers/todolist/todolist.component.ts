@@ -11,10 +11,12 @@ export class TodolistComponent implements OnInit {
 
   todos: ITodo[] = [
     {
+      id:'id_' + Math.random().toString(36).substr(2),
       name: 'Manger au 129',
       status: false
     },
     {
+      id:'id_' + Math.random().toString(36).substr(2),
       name: 'Faire Salat',
       status: true
     }
@@ -25,8 +27,18 @@ export class TodolistComponent implements OnInit {
   ngOnInit() {
   }
 
-  onStatusChange(newState: boolean) {
-    console.log(newState)
+  onStatusChange(id: string) {
+    this.todos = [...this.todos].map<ITodo>(
+      todo => {
+        if(todo.id === id) {
+          console.log(todo.status)
+          todo.status = todo.status ? false : true
+        }
+
+          
+        return todo
+      }
+    )
   }
 
 }
