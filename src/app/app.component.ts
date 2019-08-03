@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,31 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'my-angular-todolist-ngrx-store';
+
+  urls: any = {
+    todoList: true,
+    newTodo: false,
+  }
+
+  constructor(private router: Router) {
+
+  }
+
+  ngOnInit() {
+    this.updateUrl()
+  }
+
+
+  updateUrl() {
+    this.urls = {
+      ...this.urls,
+      newTodo: this.router.url === '/new-todo' ? true: false,
+      todoList: this.router.url === '/todo-list' ? true : false
+    }
+  }
+
+  onActivate() {
+    this.updateUrl()
+  }
+
 }

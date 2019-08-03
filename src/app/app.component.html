@@ -1,9 +1,23 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<mat-toolbar color="primary">
-  <h1>My TOTO LIST WITH ANGULAR</h1>
-</mat-toolbar>
 <mat-toolbar color="warn">
-  <a routerLink="new-todo">NEW TODO</a>
+  <h1>My TOTO LIST WITH ANGULAR</h1>
+  <nav>
+    <a
+      *ngIf="!urls.newTodo"
+      color="primary"
+      routerLink="/new-todo"
+      routerLinkActive="active"
+      mat-raised-button>AJOUTER UNE TODO
+    </a>
+    <a
+      *ngIf="!urls.todoList"
+      color="accent"
+      routerLink="/todo-list"
+      routerLinkActive="active"
+      mat-raised-button>LISTE DES TODOS
+    </a>
+  </nav>
 </mat-toolbar>
 
-<router-outlet></router-outlet>
+<router-outlet  (activate)='onActivate($event)'
+></router-outlet>

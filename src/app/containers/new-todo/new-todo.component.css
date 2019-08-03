@@ -1,0 +1,15 @@
+.formContainer {
+  width: 70%;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+
+#newTodoForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.formContainer > mat-form-field {
+  width: 100%;
+}

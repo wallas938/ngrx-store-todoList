@@ -1,0 +1,13 @@
+mat-action-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+mat-action-list > h3{
+  width: 300px;
+}
+
+mat-action-list > mat-checkbox{
+  width: 150px;
+}

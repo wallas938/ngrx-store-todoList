@@ -1,3 +1,49 @@
-<p>
-  new-todo works!
-</p>
+<div class="formContainer">
+  <h1>
+    Votre Nouvelle TODO
+  </h1>
+  <form id="newTodoForm" [formGroup]="newTodoForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input
+      type="text"
+      id="todo"
+      matNativeControl
+      placeholder="Todo..."
+      formControlName="newTodo"
+      MatInput
+      required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Favorite food</mat-label>
+      <mat-select formControlName="todoStatus" required>
+        <mat-option value="fini">
+          Fini
+        </mat-option>
+        <mat-option value="enCours">
+          En cours
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button type="submit"
+      color="accent"
+      mat-raised-button
+      [disabled]="newTodoForm.invalid">Enregistrer
+    </button>
+  </form>
+</div>
+<!--
+<mat-form-field>
+      <input
+        [max]="maxDate"
+        [min]="minDate"
+        matInput [matDatepicker]="picker"
+        placeholder="A faire avant le...">
+      <mat-datepicker-toggle
+        matSuffix [for]="picker">
+      </mat-datepicker-toggle>
+        <mat-datepicker #picker
+        (yearSelected)="chosenYearHandler($event)"
+        (monthSelected)="chosenMonthHandler($event)"
+        ></mat-datepicker>
+      </mat-form-field>
+    -->

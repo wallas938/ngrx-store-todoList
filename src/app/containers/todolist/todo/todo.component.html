@@ -1,3 +1,5 @@
-<p>
-  todo works!
-</p>
+<mat-action-list>
+    <h3 matLine> {{ name }} </h3>
+    <mat-checkbox *ngIf="status"  (change)="onChange($event)" [checked]="status">Fini!</mat-checkbox>
+    <mat-checkbox *ngIf="!status" (change)="onChange($event)" [checked]="status">En Cours!</mat-checkbox>
+</mat-action-list>

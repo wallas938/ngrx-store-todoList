@@ -1,3 +1,9 @@
-<p>
-  todolist works!
-</p>
+<mat-list>
+  <app-todo *ngFor="let todo of todos"
+            [name]="todo.name"
+            [status]="todo.status"
+            (isDone)="onStatusChange($event)">
+  </app-todo>
+</mat-list>
+
+

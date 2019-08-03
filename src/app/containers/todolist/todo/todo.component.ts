@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { MatListItem } from '@angular/material/list';
+import { MatFormField, MatFormFieldControl } from '@angular/material/form-field'
+import { MatInput } from '@angular/material/input'
+import { EventEmitter } from '@angular/core';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
@@ -7,9 +11,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoComponent implements OnInit {
 
+  @Input() name: string
+  @Input() status: boolean
+  @Output() isDone = new EventEmitter<boolean>()
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onChange(event) {
+    this.isDone.emit(event.checked)
   }
 
 }
