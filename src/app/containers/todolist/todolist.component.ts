@@ -1,6 +1,9 @@
+import { Actions } from '../../store/actions/todoList.action';
 import { Component, OnInit } from '@angular/core';
 import { ITodo } from 'src/app/models/todo.interface';
-import { MatList } from '@angular/material/list';
+import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import { todosMock } from '../../store/datas/datas'
 
 @Component({
   selector: 'app-todolist',
@@ -9,36 +12,34 @@ import { MatList } from '@angular/material/list';
 })
 export class TodolistComponent implements OnInit {
 
-  todos: ITodo[] = [
-    {
-      id:'id_' + Math.random().toString(36).substr(2),
-      name: 'Manger au 129',
-      status: false
-    },
-    {
-      id:'id_' + Math.random().toString(36).substr(2),
-      name: 'Faire Salat',
-      status: true
-    }
-  ]
+  todos: Observable<ITodo[]>
 
-  constructor() { }
+  constructor(private store: Store<any>) {
+    this.store.dispatch(new Actions.InitTodos(todosMock))
+   }
 
   ngOnInit() {
+
+    this.store.pipe(select('appState')).subscribe(
+      todos => {
+        this.todos = todos.data
+      }
+    )
   }
 
   onStatusChange(id: string) {
-    this.todos = [...this.todos].map<ITodo>(
+    this.store.dispatch(new Actions.IsDoneChecker(id))
+    /* this.todos = [...this.todos].map<ITodo>(
       todo => {
         if(todo.id === id) {
           console.log(todo.status)
           todo.status = todo.status ? false : true
         }
 
-          
+
         return todo
       }
-    )
+    ) */
   }
 
 }

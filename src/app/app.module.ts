@@ -22,7 +22,8 @@ import { FooterComponent } from './containers/todolist/footer/footer.component';
 import { MatNativeDateModule } from '@angular/material/core';
 
 /* Store MODULES start */
-import { StoreModule } from '@ngrx/store'
+import { StoreModule, reduceState } from '@ngrx/store'
+import { todosReducer } from './store/reducers/todo-list.reducer'
 /* Store MODULES end*/
 
 const appRoutes: Routes = [
@@ -54,7 +55,7 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     MatListModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot({ appState: todosReducer }),
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
