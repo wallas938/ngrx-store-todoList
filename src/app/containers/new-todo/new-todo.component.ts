@@ -4,6 +4,9 @@ import { MatInput } from '@angular/material/input'
 import { MatDatepicker } from '@angular/material/datepicker'
 import { MatSelect } from '@angular/material/select'
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { Actions } from 'src/app/store/actions/todoList.action';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-new-todo',
   templateUrl: './new-todo.component.html',
@@ -19,13 +22,18 @@ export class NewTodoComponent implements OnInit {
   minDate = new Date(2019, 0, 1);
   maxDate = new Date(2030, 12, 31);
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private router: Router,
+              private store: Store<any>) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    console.log(this.newTodoForm.value)
+    const newTodo = this.newTodoForm.value.newTodo
+    const todoStatus = this.newTodoForm.value.todoStatus
+    this.store.dispatch( new Actions.AddNewTodo(newTodo, todoStatus) )
+    this.router.navigate(['/todo-list'])
   }
 /*
   chosenYearHandler(year) {

@@ -16,7 +16,7 @@ export class TodoComponent implements OnInit {
   @Input() name: string
   @Input() status: boolean
   @Output() isDone = new EventEmitter<string>()
-
+  @Output() toDelete = new EventEmitter<string>()
 
 
   constructor() { }
@@ -26,6 +26,10 @@ export class TodoComponent implements OnInit {
 
   onChange(id: string) {
     this.isDone.emit(id)
+  }
+
+  onDelete(id: string) {
+    this.toDelete.emit(id)
   }
 
 }

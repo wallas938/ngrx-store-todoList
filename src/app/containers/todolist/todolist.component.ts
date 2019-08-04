@@ -12,34 +12,26 @@ import { todosMock } from '../../store/datas/datas'
 })
 export class TodolistComponent implements OnInit {
 
-  todos: Observable<ITodo[]>
+  todos$: Observable<ITodo[]>
 
-  constructor(private store: Store<any>) {
-    this.store.dispatch(new Actions.InitTodos(todosMock))
+  constructor(private store: Store<{appState: ITodo[]}>) {
    }
 
   ngOnInit() {
 
     this.store.pipe(select('appState')).subscribe(
-      todos => {
-        this.todos = todos.data
+      state => {
+        this.todos$ = state.todos
       }
     )
   }
 
   onStatusChange(id: string) {
     this.store.dispatch(new Actions.IsDoneChecker(id))
-    /* this.todos = [...this.todos].map<ITodo>(
-      todo => {
-        if(todo.id === id) {
-          console.log(todo.status)
-          todo.status = todo.status ? false : true
-        }
+  }
 
-
-        return todo
-      }
-    ) */
+  onDeleteTodo(id: string) {
+    this.store.dispatch(new Actions.DeleteTodo(id))
   }
 
 }

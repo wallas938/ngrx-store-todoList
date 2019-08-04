@@ -1,9 +1,10 @@
 <mat-list>
-  <app-todo *ngFor="let todo of todos"
+  <app-todo *ngFor="let todo of todos$"
             [id]="todo.id"
             [name]="todo.name"
             [status]="todo.status"
-            (isDone)="onStatusChange($event)">
+            (isDone)="onStatusChange($event)"
+            (toDelete)="onDeleteTodo($event)">
   </app-todo>
 </mat-list>
 

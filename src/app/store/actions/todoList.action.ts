@@ -17,9 +17,13 @@ import { ITodo } from "src/app/models/todo.interface";
   }
   export class AddNewTodo {
     readonly type = TodoActionTypes.ADD_NEW_TODO;
-    newTodo: ITodo
-    constructor(newTodo: ITodo) {
-      this.newTodo = newTodo
+    todoId: string
+    isDone: boolean
+    name: ITodo
+    constructor(newTodo: ITodo, todoStatus: string) {
+      this.name = newTodo
+      this.isDone = todoStatus === "1" ? true : false
+      this.todoId = 'id_' + Math.random().toString(36).substr(2)
     }
   }
   export class IsDoneChecker {
@@ -28,7 +32,6 @@ import { ITodo } from "src/app/models/todo.interface";
     todoId: string
     constructor(todoId: string) {
       this.todoId = todoId
-      this.isDone = this.isDone ? false : true
     }
   }
   export class DeleteTodo {

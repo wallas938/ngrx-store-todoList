@@ -2,7 +2,22 @@ mat-action-list {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: baseline;
+  align-items: center;
+}
+
+mat-action-list > div {
+  width: 70%;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+mat-action-list > div > i {
+  font-size: 1.8rem;
+  color: salmon;
+  cursor: pointer;
 }
 
 mat-action-list > h3{
