@@ -43,6 +43,21 @@ export function todosReducer(state = initialState, action: AppActions) {
         todos: tabIsDone
       };
 
+    case TodoActionTypes.EDIT_TODO:
+
+      const tabIsEdit = [...state.todos].map(todo => {
+        if(todo.id === action.todoId) {
+          todo.name = action.name
+        }
+
+
+        return todo
+      })
+      return {
+        ...state,
+        todos: tabIsEdit
+      }
+
     default:
       console.log(action);
       return state;

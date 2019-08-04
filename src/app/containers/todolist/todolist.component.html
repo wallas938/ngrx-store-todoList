@@ -4,7 +4,8 @@
             [name]="todo.name"
             [status]="todo.status"
             (isDone)="onStatusChange($event)"
-            (toDelete)="onDeleteTodo($event)">
+            (toDelete)="onDeleteTodo($event)"
+            (updatedTodo)="onUpdatedTodo($event)">
   </app-todo>
 </mat-list>
 

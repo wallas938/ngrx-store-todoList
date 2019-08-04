@@ -5,7 +5,8 @@ import { ITodo } from "src/app/models/todo.interface";
     INIT_TODOS = "[todoList] Init Todos",
     ADD_NEW_TODO = "[todolist] Add new Todo",
     IS_DONE = "[todolist] Check if todo is done",
-    DELETE_TODO = "[todolist] Delete Todo"
+    DELETE_TODO = "[todolist] Delete Todo",
+    EDIT_TODO = "[todolist] Edit Todo",
   }
   export namespace Actions {
   export class InitTodos {
@@ -41,9 +42,19 @@ import { ITodo } from "src/app/models/todo.interface";
       this.todoId = todoId
     }
   }
+  export class EditTodo {
+    readonly type = TodoActionTypes.EDIT_TODO;
+    todoId: string
+    name: string
+    constructor(todoId: string, newName: string) {
+      this.todoId = todoId
+      this.name = newName
+    }
+  }
 }
 
 export type AppActions =  Actions.InitTodos |
                           Actions.AddNewTodo |
                           Actions.IsDoneChecker |
+                          Actions.EditTodo |
                           Actions.DeleteTodo;

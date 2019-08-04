@@ -12,6 +12,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox'
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list'
+import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 /* Materials NgModule end*/
 
 import { AppComponent } from './app.component';
@@ -23,7 +24,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 /* Store MODULES start */
 import { StoreModule, reduceState } from '@ngrx/store'
-import { todosReducer } from './store/reducers/todo-list.reducer'
+import { todosReducer } from './store/reducers/todo-list.reducer';
+import { EditModalComponent } from './containers/todolist/todo/edit-modal/edit-modal.component'
 /* Store MODULES end*/
 
 const appRoutes: Routes = [
@@ -40,7 +42,9 @@ const appRoutes: Routes = [
     TodoComponent,
     NewTodoComponent,
     FooterComponent,
+    EditModalComponent,
   ],
+  entryComponents: [EditModalComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -55,10 +59,14 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     MatListModule,
+    MatDialogModule,
     StoreModule.forRoot({ appState: todosReducer }),
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+  ],
+  bootstrap: [AppComponent],
+  exports: [EditModalComponent]
 })
 export class AppModule { }

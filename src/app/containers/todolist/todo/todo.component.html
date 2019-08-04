@@ -1,10 +1,13 @@
 <mat-action-list>
-  <div>
+  <div class="block1">
     <i (click)="onDelete(id)" class="fas fa-backspace"></i>
-    <h3 matLine *ngIf="status" > <del>{{ name }}</del></h3>
+    <h3 matLine *ngIf="status"> <del>{{ name }}</del></h3>
     <h3 matLine *ngIf="!status"> {{ name }} </h3>
   </div>
-
-  <mat-checkbox *ngIf="status"  (change)="onChange(id)" [checked]="status">Fini!</mat-checkbox>
-  <mat-checkbox *ngIf="!status" (change)="onChange(id)" [checked]="status">En Cours!</mat-checkbox>
-</mat-action-list>
+  <div class="block2">
+    <mat-checkbox *ngIf="status"  (change)="onChange(id)" [checked]="status">Fini!</mat-checkbox>
+    <mat-checkbox *ngIf="!status" (change)="onChange(id)" [checked]="status">En Cours!</mat-checkbox>
+    <button (click)="onEdit(id)" color="accent" mat-stroked-button>Modifier</button>
+  </div>
+  </mat-action-list>
+  <mat-divider></mat-divider>

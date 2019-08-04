@@ -3,9 +3,10 @@ mat-action-list {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  margin-bottom: 20px;
 }
 
-mat-action-list > div {
+mat-action-list > div.block1 {
   width: 70%;
   padding-top: 10px;
   display: flex;
@@ -14,16 +15,30 @@ mat-action-list > div {
   align-items: center;
 }
 
-mat-action-list > div > i {
+mat-action-list > div.block2 {
+  width: 30%;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+mat-action-list > div.block1 > i {
   font-size: 1.8rem;
   color: salmon;
   cursor: pointer;
 }
 
-mat-action-list > h3{
+mat-action-list > div.block1 > h3{
   width: 300px;
 }
 
 mat-action-list > mat-checkbox{
   width: 150px;
+}
+
+mat-divider {
+  width: 70%;
+  margin: 0 auto;
 }
