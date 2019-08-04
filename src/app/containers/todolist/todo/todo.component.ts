@@ -51,10 +51,11 @@ export class TodoComponent implements OnInit {
     modalRef.afterClosed().subscribe(
 
       name => {
-
-        this.updatedTodo.emit({id: id, name: name})
-
-      }
+        if(name === undefined || name === '')
+          name = this.name
+        else
+          this.updatedTodo.emit({id: id, name: name})
+        }
     )
   }
 

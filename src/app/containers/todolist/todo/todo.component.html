@@ -6,7 +6,7 @@
   </div>
   <div class="block2">
     <mat-checkbox *ngIf="status"  (change)="onChange(id)" [checked]="status">Fini!</mat-checkbox>
-    <mat-checkbox *ngIf="!status" (change)="onChange(id)" [checked]="status">En Cours!</mat-checkbox>
+    <mat-checkbox *ngIf="!status" (change)="onChange(id)" [checked]="status">En Cours...</mat-checkbox>
     <button (click)="onEdit(id)" color="accent" mat-stroked-button>Modifier</button>
   </div>
   </mat-action-list>

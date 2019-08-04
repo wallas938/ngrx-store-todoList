@@ -20,6 +20,6 @@ export class EditModalComponent implements OnInit {
   ngOnInit() {
   }
   onNoClick(): void {
-    this.modalRef.close()
+      this.modalRef.close()
   }
 }
