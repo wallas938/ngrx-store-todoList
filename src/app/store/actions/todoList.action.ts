@@ -4,7 +4,7 @@ import { ITodo } from "src/app/models/todo.interface";
   export enum TodoActionTypes {
     INIT_TODOS = "[todoList] Init Todos",
     ADD_NEW_TODO = "[todolist] Add new Todo",
-    IS_DONE = "[todolist] Check if todo is done",
+    IS_DONE = "[todolist] Change todo status",
     DELETE_TODO = "[todolist] Delete Todo",
     EDIT_TODO = "[todolist] Edit Todo",
   }

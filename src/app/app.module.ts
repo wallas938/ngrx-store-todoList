@@ -26,6 +26,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { StoreModule, reduceState } from '@ngrx/store'
 import { todosReducer } from './store/reducers/todo-list.reducer';
 import { EditModalComponent } from './containers/todolist/todo/edit-modal/edit-modal.component'
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment'
 /* Store MODULES end*/
 
 const appRoutes: Routes = [
@@ -60,8 +62,10 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     MatListModule,
     MatDialogModule,
+    StoreDevtoolsModule.instrument(),
     StoreModule.forRoot({ appState: todosReducer }),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
